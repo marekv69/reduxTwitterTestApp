@@ -1,5 +1,5 @@
 {
-  "name": "redux-async-example",
+  "name": "reduxTwitterTestApp",
   "version": "0.0.0",
   "description": "Redux async example",
   "scripts": {
@@ -7,7 +7,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/rackt/redux.git"
+    "url": "https://github.com/marekv69/reduxTwitterTestApp.git"
   },
   "keywords": [
     "react",
@@ -27,10 +27,13 @@
   "homepage": "http://rackt.github.io/redux",
   "dependencies": {
     "babel-polyfill": "^6.3.14",
+    "immutable": "^3.6.4",
     "isomorphic-fetch": "^2.1.1",
     "react": "^0.14.7",
+    "react-bootstrap": "^0.28.2",
     "react-dom": "^0.14.7",
     "react-redux": "^4.2.1",
+    "react-tweet": "^1.0.11",
     "redux": "^3.2.1",
     "redux-logger": "^2.4.0",
     "redux-thunk": "^1.0.3"
@@ -44,6 +47,10 @@
     "expect": "^1.6.0",
     "express": "^4.13.3",
     "node-libs-browser": "^0.5.2",
+    "normalize.css": "^3.0.2",
+    "style-loader": "^0.13.0",
+    "stylus-loader": "^1.0.0",
+    "twit" : "^2.1.1",
     "webpack": "^1.9.11",
     "webpack-dev-middleware": "^1.2.0",
     "webpack-hot-middleware": "^2.2.0"
