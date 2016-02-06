@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import {
   SELECT_REDDIT, INVALIDATE_REDDIT,
-  REQUEST_POSTS, RECEIVE_POSTS
+    REQUEST_TWEETS, RECEIVE_TWEETS,RECEIVE_ERROR
 } from '../actions'
 
 function selectedReddit(state = 'reactjs', action) {
@@ -62,10 +62,34 @@ function postsByReddit(state = { }, action) {
       return state
   }
 }
-//Thim method create reducers and 2 state parts postsByReddit, selectedReddit
-const rootReducer = combineReducers({
-  postsByReddit,
-  selectedReddit
-})
 
-export default rootReducer
+const initialState = {
+    currentSortingProperty : "date",
+    currentSortingType : "descending",
+    filterString : "",
+    showModalInfo : false,
+    tweetsResponse : null,
+    areTweetsLoading : false
+};
+
+
+function tweetsReducer(state = initialState, action) {
+
+  switch (action.type) {
+    case INVALIDATE_REDDIT:
+    case RECEIVE_POSTS:
+    case REQUEST_POSTS:
+      /* let nextState = {}
+       nextState[action.reddit] = posts(state[action.reddit], action)
+       return Object.assign({}, state, nextState)*/
+
+      return Object.assign({}, state, {
+        [action.reddit]: posts(state[action.reddit], action)
+      })
+    default:
+      return state
+  }
+}
+
+
+export default tweetsReducer;

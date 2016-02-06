@@ -1,9 +1,10 @@
-import fetch from 'isomorphic-fetch'
+import fetch from 'isomorphic-fetch';
 
-export const REQUEST_POSTS = 'REQUEST_POSTS'
-export const RECEIVE_POSTS = 'RECEIVE_POSTS'
-export const SELECT_REDDIT = 'SELECT_REDDIT'
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT'
+export const REQUEST_TWEETS = 'REQUEST_TWEETS';
+export const RECEIVE_TWEETS = 'RECEIVE_TWEETS';
+export const RECEIVE_ERROR = 'RECEIVE_ERROR';
+export const SELECT_REDDIT = 'SELECT_REDDIT';
+export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';
 
 export function selectReddit(reddit) {
   return {
@@ -19,51 +20,36 @@ export function invalidateReddit(reddit) {
   }
 }
 
-function requestPosts(reddit) {
+function requestTweets(reddit) {
   return {
-    type: REQUEST_POSTS,
-    reddit
+    type: REQUEST_TWEETS,
+    areTweetsLoading : true
   }
 }
 
-function receivePosts(reddit, json) {
+function receiveTweets(response) {
   return {
-    type: RECEIVE_POSTS,
-    reddit: reddit,
-    posts: json.data.children.map(child => child.data),
-    receivedAt: Date.now()
+    type: RECEIVE_TWEETS,
+    tweetsResponse: response,
+    areTweetsLoading : false
   }
 }
 
-// fetches posts if there are no posts for selected reddit "frontend" or "reactjs" or if posts.invalidate is true
-function fetchPosts(reddit) {
+function receiveError(error) {
+  return {
+    type: RECEIVE_ERROR,
+    tweetsResponse: {errorMessage: error.message},
+    areTweetsLoading : false
+  }
+}
+
+function getTweets(username) {
   return dispatch => {
-    dispatch(requestPosts(reddit))
-    return fetch(`https://www.reddit.com/r/${reddit}.json`)
+    dispatch(requestTweets());
+    return fetch(`/user_timeline?screen_name=${username}`)
       .then(response => response.json())
-      .then(json => dispatch(receivePosts(reddit, json)))
+      .then(response => dispatch(receiveTweets(response)))
+      .catch(error =>  dispatch(receiveError(error)));
   }
 }
 
-//returns true if there are no posts for selected reddit "frontend" or "reactjs" or if posts.invalidate is true
-//returns false if fetching or if posts.didInvalidate is false
-function shouldFetchPosts(state, reddit) {
-  const posts = state.postsByReddit[reddit]
-  if (!posts) {
-    return true
-  }
-  if (posts.isFetching) {
-    return false
-  }
-  console.log("Invalidate: "+ posts.didInvalidate)
-  return posts.didInvalidate
-}
-
-//using thunk middleware allows passing dispatch and get state to actions
-export function fetchPostsIfNeeded(reddit) {
-  return (dispatch, getState) => {
-    if (shouldFetchPosts(getState(), reddit)) {
-      return dispatch(fetchPosts(reddit))
-    }
-  }
-}
