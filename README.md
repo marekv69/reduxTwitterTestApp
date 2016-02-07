@@ -2,7 +2,7 @@
 
 this app is used for showing 50 latest tweets of a twitter user. It's implemented using [React framework](http://facebook.github.io/react/docs/getting-started.html) and [Redux container]. It uses Async test app from Redux as an infrastructure 
 
-## Fundamental used modules
+## Important used modules
 * [Redux Async example app](https://github.com/rackt/redux/tree/master/examples) - for app infrastructure
 * [react tweet](https://github.com/artnotfound/react-tweet) - react tweet component for visualizing a tweet from Twitter
 * [react bootstrap](https://github.com/react-bootstrap/react-bootstrap) - some copmonents (buttons, inputs) are used from this library
