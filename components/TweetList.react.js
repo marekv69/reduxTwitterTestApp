@@ -5,7 +5,7 @@ import TweetListButtonGroup from './TweetListButtonGroup.react';
 //import TweetListFilterBar from './TweetListFilterBar.react';
 //import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';
 import TweetListTweetsOutput from './TweetListTweetsOutput.react';
-//import TweetListModalInfo from './TweetListModalInfo.react.js';*/
+import TweetListModalInfo from './TweetListModalInfo.react.js';
 
 /**
  * This component is used for showing 50 latest tweets of a user if gathering the tweets using Twitter API
@@ -25,7 +25,7 @@ export default class TweetList extends Component {
     this.changeSorting = this.changeSorting.bind(this);
     this.changeFilteringString = this.changeFilteringString.bind(this);
     this.showModalInfo = this.showModalInfo.bind(this);
-    this._hideModalInfo = this._hideModalInfo.bind(this);
+
   }
 
   changeSorting(currentSortingProperty, currentSortingType) {
@@ -47,26 +47,20 @@ export default class TweetList extends Component {
     });
   }
 
-  _hideModalInfo() {
-    this.setState({
-      showModalInfo : false
-    });
-  }
-
   render() {
 
      /*<TweetListFilterBar onChangeFilteringString={this.changeFilteringString} filterString={this.state.filterString}/>
      <TweetListFilteringAndSortingInfo filterString={this.state.filterString} currentSortingProperty=
      {this.state.currentSortingProperty} currentSortingType={this.state.currentSortingType}/>*/
 
-    /* <TweetListModalInfo tweets={this.props.tweets} showModalInfo={this.state.showModalInfo}
-     closeModalInfoHandler={this._hideModalInfo}/>*/
+
     return (
       <div className="tweet-list">
         <TweetListButtonGroup dispatch={this.props.dispatch}/>
         <TweetListTweetsOutput currentSortingProperty={this.props.currentSortingProperty} currentSortingType=
           {this.props.currentSortingType} filterString={this.props.filterString} tweets={this.props.tweets}/>
-
+        <TweetListModalInfo tweets={this.props.tweets} dispatch={this.props.dispatch}
+                            showModalInfo={this.props.showModalInfo}/>
       </div>
     );
   }
