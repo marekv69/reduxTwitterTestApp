@@ -3,29 +3,8 @@ import fetch from 'isomorphic-fetch';
 export const REQUEST_TWEETS = 'REQUEST_TWEETS';
 export const RECEIVE_TWEETS = 'RECEIVE_TWEETS';
 export const RECEIVE_ERROR = 'RECEIVE_ERROR';
-export const SELECT_REDDIT = 'SELECT_REDDIT';
-export const INVALIDATE_REDDIT = 'INVALIDATE_REDDIT';
+export const CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO = 'CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO';
 
-export function selectReddit(reddit) {
-  return {
-    type: SELECT_REDDIT,
-    reddit
-  }
-}
-
-export function invalidateReddit(reddit) {
-  return {
-    type: INVALIDATE_REDDIT,
-    reddit
-  }
-}
-
-function requestTweets(reddit) {
-  return {
-    type: REQUEST_TWEETS,
-    areTweetsLoading : true
-  }
-}
 
 function receiveTweets(response) {
   return {
@@ -43,7 +22,15 @@ function receiveError(error) {
   }
 }
 
-function getTweets(username) {
+export function changeFilteringOrSorting(changePropertyObject) {
+  return {
+    type: CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO,
+    tweetsResponse: {errorMessage: error.message},
+    changePropertyObject : changePropertyObject
+  }
+}
+
+export function getTweets(username) {
   return dispatch => {
     dispatch(requestTweets());
     return fetch(`/user_timeline?screen_name=${username}`)

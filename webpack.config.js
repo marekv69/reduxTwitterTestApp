@@ -24,6 +24,14 @@ module.exports = {
         loaders: ['babel'],
         exclude: /node_modules/,
         include: __dirname
+      },
+      {
+        test: /\.css$/,
+        loader: "style-loader!css-loader"
+      },
+      {
+        test   : /\.(ttf|eot|png|jpg|gif|svg|woff(2)?)(\?[a-z0-9]+)?$/,
+        loader : 'file-loader'
       }
     ]
   }

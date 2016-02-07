@@ -1,11 +1,11 @@
 //import './TweetList.styl';
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
-import TweetListButtonGroup from './TweetListButtonGroup.react';
+/*import TweetListButtonGroup from './TweetListButtonGroup.react';
 import TweetListFilterBar from './TweetListFilterBar.react';
 import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';
 import TweetListTweetsOutput from './TweetListTweetsOutput.react';
-import TweetListModalInfo from './TweetListModalInfo.react.js';
+import TweetListModalInfo from './TweetListModalInfo.react.js';*/
 
 /**
  * This component is used for showing 50 latest tweets of a user if gathering the tweets using Twitter API
@@ -19,9 +19,7 @@ import TweetListModalInfo from './TweetListModalInfo.react.js';
  */
 export default class TweetList extends Component {
 
-  static propTypes = {
-    tweets: PropTypes.array
-  };
+
 
   constructor(props) {
     super(props);
@@ -78,3 +76,7 @@ export default class TweetList extends Component {
     );
   }
 }
+
+TweetList.propTypes = {
+  tweets: PropTypes.array
+};

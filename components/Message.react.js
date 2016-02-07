@@ -8,11 +8,6 @@ import React, { PropTypes } from 'react'
  */
 export default class Message extends Component {
 
-  static propTypes = {
-    message: PropTypes.object.required,
-    messageType: PropTypes.object.required
-  };
-
   constructor(props) {
     super(props);
   }
@@ -28,4 +23,8 @@ export default class Message extends Component {
   }
 }
 
+Message.propTypes = {
+  message: PropTypes.string,
+  messageType: PropTypes.string
+};
 

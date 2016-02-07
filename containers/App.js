@@ -11,43 +11,31 @@ class App extends Component {
     super(props)
   }
 
-  //after loading the component
-  componentDidMount() {
-
-  }
-
-  componentWillReceiveProps(nextProps) {
-
-  }
-
-
   render() {
     const { tweets, errorMessage, standardMessage,  areTweetsLoading, currentSortingProperty,
         currentSortingType, filterString, showModalInfo, dispatch} = this.props;
 
-
     let tweetsSearchOutput;
+
     if(tweets){
       tweetsSearchOutput = <TweetList tweets={tweets}
-                                      areTweetsLoading={areTweetsLoading}
-                                      currentSortingProperty={currentSortingProperty}
-                                      currentSortingType={currentSortingType}
-                                      filterString={filterString}
-                                      showModalInfo={showModalInfo}
-                                      dispatch={dispatch}/>;
+                                          areTweetsLoading={areTweetsLoading}
+                                          currentSortingProperty={currentSortingProperty}
+                                          currentSortingType={currentSortingType}
+                                          filterString={filterString}
+                                          showModalInfo={showModalInfo}
+                                          dispatch={dispatch}/>;
     } else if (errorMessage){
       tweetsSearchOutput = <Message message={errorMessage} messageType="errorMessage" />;
     } else {
       tweetsSearchOutput = <Message message={standardMessage || ""} messageType="standardMessage" />;
     }
 
-    const tweetsSearchOutputConst = tweetsSearchOutput;
-
     return (
         <div className="twitter-app-page">
           <h2>Show 50 latest tweets by user name</h2>
           <SearchBar areTweetsLoading={areTweetsLoading} dispatch={dispatch}/>
-          {tweetsSearchOutputConst}
+          {tweetsSearchOutput}
         </div>
     );
   }
@@ -58,12 +46,26 @@ App.propTypes = {
   errorMessage : PropTypes.string,
   standardMessage : PropTypes.string,
   areTweetsLoading: PropTypes.bool.isRequired,
-  sortingAndFilteringInfo : PropTypes.object,
+  currentSortingProperty: PropTypes.string,
+  currentSortingType: PropTypes.string,
+  filterString: PropTypes.string,
+  showModalInfo: PropTypes.bool,
   dispatch: PropTypes.func.isRequired
 };
 
 function mapStateToProps(state) {
-  return state;
+  const {areTweetsLoading, currentSortingProperty, currentSortingType, filterString, showModalInfo} = state;
+  const {tweets, errorMessage, standardMessage} = state.tweetsResponse || {};
+  return {
+    areTweetsLoading,
+    currentSortingProperty,
+    currentSortingType,
+    filterString,
+    showModalInfo,
+    tweets,
+    errorMessage,
+    standardMessage
+  };
 }
 
 //Connects this react component App to react store
