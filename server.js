@@ -1,20 +1,21 @@
 "use strict";
-var webpack = require('webpack')
-var webpackDevMiddleware = require('webpack-dev-middleware')
-var webpackHotMiddleware = require('webpack-hot-middleware')
-var config = require('./webpack.config')
-var twit = require('twit');
+var webpack = require('webpack');
+var webpackDevMiddleware = require('webpack-dev-middleware');
+var webpackHotMiddleware = require('webpack-hot-middleware');
+var config = require('./webpack.config');
+var Twit = require('twit');
 
-var app = new (require('express'))()
-var port = 3000
 
-var compiler = webpack(config)
-app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }))
-app.use(webpackHotMiddleware(compiler))
+var app = new (require('express'))();
+var port = 3000;
+
+var compiler = webpack(config);
+app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
+app.use(webpackHotMiddleware(compiler));
 
 app.get("/", function(req, res) {
   res.sendFile(__dirname + '/index.html')
-})
+});
 
 
 /**
@@ -30,7 +31,7 @@ const twitConfig = {
  * get ajax method to Twitter API for gathering 50 latest tweets of a user with specified username
  */
 app.get("/user_timeline",function (req, res)  {
-  const twit = new twit(twitConfig);
+  const twit = new Twit(twitConfig);
 
   twit.get('statuses/user_timeline', { screen_name: req.query.screen_name, count: 50 }, (err, data) => {
     let response;
