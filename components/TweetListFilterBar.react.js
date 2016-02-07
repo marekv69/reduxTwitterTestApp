@@ -1,0 +1,70 @@
+//import './TweetListFilterBar.styl';
+import Component from 'react-pure-render/component';
+import React, {PropTypes} from 'react';
+import {Input, Button} from 'react-bootstrap';
+import { changeFilteringOrSortingOrModalInfo } from '../actions';
+
+/**
+ * This component is used for filtering showed tweets through a filter string in their bodies.
+ * It contains <Input> for entering the filter string and <Button> for confirmation of the filter
+ */
+export default class TweetListFilterBar extends Component {
+
+  constructor(props) {
+    super(props);
+    this._onButtonClick = this._onButtonClick.bind(this);
+    this._handleKeyPress = this._handleKeyPress.bind(this);
+    this._onInputValueChange = this._onInputValueChange.bind(this);
+
+    this.state = {
+      inputValue : ""
+    };
+  }
+
+  _onButtonClick() {
+    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
+      filterString : this.state.inputValue
+    }));
+    this.setState({
+      inputValue : ""
+    });
+  }
+
+  _handleKeyPress(event) {
+    if(event.charCode==13 && this.state.inputValue !== ""){
+      this._onButtonClick();
+    }
+  }
+
+  _onInputValueChange(event){
+    this.setState({
+      inputValue : event.target.value
+    });
+  }
+
+  render() {
+    const innerButton =
+      <Button title="Filter" bsSize="small" bsStyle="info" onClick={this._onButtonClick}>
+        {this.props.filterString === "" ? "Use Filter" : "Clear Filter"}
+      </Button>;
+
+    return (
+      <div className="filter-bar">
+        <Input bsSize="small" placeholder={this.props.filterString === "" ? "Write some text and press Enter or use " +
+         "Filter button to filter tweets" : "Filter is on. Click Clear Filter button to clear filter"}
+          type="text"
+          buttonAfter={innerButton}
+          disabled = {this.props.filterString !== ""}
+          onKeyPress={this._handleKeyPress}
+          onChange={this._onInputValueChange}
+          value={this.state.inputValue}
+        />
+      </div>
+    );
+  }
+}
+
+PropTypes.propTypes = {
+  filterString: PropTypes.string.isRequired,
+  dispatch: PropTypes.func.isRequired
+};
