@@ -21,24 +21,7 @@ export default class TweetList extends Component {
 
   constructor(props) {
     super(props);
-
-    this.changeSorting = this.changeSorting.bind(this);
-    this.changeFilteringString = this.changeFilteringString.bind(this);
   }
-
-  changeSorting(currentSortingProperty, currentSortingType) {
-    this.setState({
-      currentSortingProperty,
-      currentSortingType
-    });
-  }
-
-  changeFilteringString(newFilterString) {
-    this.setState({
-      filterString : newFilterString
-    });
-  }
-
 
   render() {
     return (

@@ -35,8 +35,6 @@ export default class SearchBar extends Component {
   {
     const currentInputValue = this.state.currentInputValue;
     this.props.dispatch(getTweets(currentInputValue));
-    //this.props.onSearchBarButtonClick(currentInputValue);
-
   }
 
   render() {
