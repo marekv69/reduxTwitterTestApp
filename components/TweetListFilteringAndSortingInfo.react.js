@@ -33,7 +33,7 @@ export default class TweetListFilteringInfo extends Component {
 }
 
 TweetListFilteringInfo.propTypes = {
-  filteringInfo: PropTypes.string.isRequired,
+  filterString: PropTypes.string.isRequired,
   currentSortingProperty : PropTypes.string.isRequired,
   currentSortingType : PropTypes.string.isRequired
 };
