@@ -9,30 +9,37 @@ export const CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO = 'CHANGE_FILTERING_OR_SO
 function requestTweets() {
   return {
     type: REQUEST_TWEETS,
-    areTweetsLoading : true
+    requestPayload : {
+      tweetsResponse : [],
+      areTweetsLoading : true
+    }
+
   }
 }
 
 function receiveTweets(response) {
   return {
     type: RECEIVE_TWEETS,
-    tweetsResponse: response,
-    areTweetsLoading : false
+    receivePayload : {
+      tweetsResponse: response,
+      areTweetsLoading : false
+    }
   }
 }
 
 function receiveError(error) {
   return {
     type: RECEIVE_ERROR,
-    tweetsResponse: {errorMessage: error.message},
-    areTweetsLoading : false
+    receivePayload : {
+      tweetsResponse: {errorMessage: error.message},
+      areTweetsLoading : false
+    }
   }
 }
 
 export function changeFilteringOrSorting(changePropertyObject) {
   return {
     type: CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO,
-    tweetsResponse: {errorMessage: error.message},
     changePropertyObject : changePropertyObject
   }
 }
