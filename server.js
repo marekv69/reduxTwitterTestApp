@@ -7,7 +7,7 @@ var Twit = require('twit');
 
 
 var app = new (require('express'))();
-var port = 3000;
+var port = process.env.PORT || 3000;
 
 var compiler = webpack(config);
 app.use(webpackDevMiddleware(compiler, { noInfo: true, publicPath: config.output.publicPath }));
