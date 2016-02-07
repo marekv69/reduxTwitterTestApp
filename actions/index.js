@@ -37,7 +37,7 @@ function receiveError(error) {
   }
 }
 
-export function changeFilteringOrSorting(changePropertyObject) {
+export function changeFilteringOrSortingOrModalInfo(changePropertyObject) {
   return {
     type: CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO,
     changePropertyObject : changePropertyObject

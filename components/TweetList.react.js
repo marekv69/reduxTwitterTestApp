@@ -1,9 +1,9 @@
 //import './TweetList.styl';
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
-/*import TweetListButtonGroup from './TweetListButtonGroup.react';
-import TweetListFilterBar from './TweetListFilterBar.react';
-import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';*/
+import TweetListButtonGroup from './TweetListButtonGroup.react';
+//import TweetListFilterBar from './TweetListFilterBar.react';
+//import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';
 import TweetListTweetsOutput from './TweetListTweetsOutput.react';
 //import TweetListModalInfo from './TweetListModalInfo.react.js';*/
 
@@ -54,17 +54,16 @@ export default class TweetList extends Component {
   }
 
   render() {
-    /*<TweetListButtonGroup onChangeSorting={this.changeSorting} showModalInfo={this.showModalInfo}/>
-     <TweetListFilterBar onChangeFilteringString={this.changeFilteringString} filterString={this.state.filterString}/>
+
+     /*<TweetListFilterBar onChangeFilteringString={this.changeFilteringString} filterString={this.state.filterString}/>
      <TweetListFilteringAndSortingInfo filterString={this.state.filterString} currentSortingProperty=
      {this.state.currentSortingProperty} currentSortingType={this.state.currentSortingType}/>*/
 
     /* <TweetListModalInfo tweets={this.props.tweets} showModalInfo={this.state.showModalInfo}
      closeModalInfoHandler={this._hideModalInfo}/>*/
-
     return (
       <div className="tweet-list">
-
+        <TweetListButtonGroup dispatch={this.props.dispatch}/>
         <TweetListTweetsOutput currentSortingProperty={this.props.currentSortingProperty} currentSortingType=
           {this.props.currentSortingType} filterString={this.props.filterString} tweets={this.props.tweets}/>
 
