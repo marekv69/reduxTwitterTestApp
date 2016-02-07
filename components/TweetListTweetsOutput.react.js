@@ -1,4 +1,3 @@
-//import './TweetListTweetsOutput.styl';
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import Tweet from 'react-tweet';

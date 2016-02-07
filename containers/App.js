@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
-import React, {PropTypes} from 'react'
-import { connect } from 'react-redux'
-import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions'
+import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
+import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions';
 import TweetList from '../components/TweetList.react';
 import SearchBar from '../components/SearchBar.react';
 import Message from '../components/Message.react';

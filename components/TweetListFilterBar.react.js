@@ -1,4 +1,3 @@
-//import './TweetListFilterBar.styl';
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import {Input, Button} from 'react-bootstrap';

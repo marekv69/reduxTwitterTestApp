@@ -1,7 +1,7 @@
 {
   "name": "reduxTwitterTestApp",
   "version": "0.0.0",
-  "description": "Redux async example",
+  "description": "Redux twitter test app",
   "scripts": {
     "start": "nodemon --ignore actions/ --ignore components/ --ignore containers/ --ignore lib/ --ignore reducers/ --ignore store/ --ignore index.js server.js"
   },

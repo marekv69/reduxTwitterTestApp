@@ -1,4 +1,3 @@
-//import './Message.styl';
 import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react'
 
@@ -14,7 +13,6 @@ export default class Message extends Component {
 
   render() {
     const {message, messageType} = this.props;
-
     const className = messageType === "standardMessage" ? "message" : "message error";
 
     return (

@@ -1,5 +1,5 @@
-import { combineReducers } from 'redux'
-import { REQUEST_TWEETS, RECEIVE_TWEETS, RECEIVE_ERROR, CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO } from '../actions'
+import { combineReducers } from 'redux';
+import { REQUEST_TWEETS, RECEIVE_TWEETS, RECEIVE_ERROR, CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO } from '../actions';
 
 
 
@@ -25,7 +25,7 @@ function tweetsReducer(state = {areTweetsLoading: false}, action) {
       return Object.assign({}, state, action.changePropertyObject);
 
     default:
-      return state
+      return state;
   }
 }
 

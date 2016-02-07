@@ -1,0 +1,39 @@
+#root {
+    margin : 0 2em;
+}
+
+.tweet-list {
+    margin-top : 2em;
+}
+
+.message {
+    margin : 2em 0;
+    font-weight : bold
+}
+
+.message.error {
+    color : red;
+}
+
+.search-bar {
+    margin-bottom : 2em;
+    width : 60%;
+}
+
+.filter-bar {
+    margin-top : 0.5em;
+}
+
+.filter-bar .input-group {
+    width : 60%;
+}
+
+.tweets-output .noTweetsMessage {
+    display : inline-block;
+    font-weight : bold;
+    margin : 1.5em 0;
+}
+
+
+
+

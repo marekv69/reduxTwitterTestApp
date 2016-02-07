@@ -1,10 +1,11 @@
 import './node_modules/bootstrap/dist/css/bootstrap.min.css';
-import 'babel-polyfill'
-import React from 'react'
-import { render } from 'react-dom'
-import { Provider } from 'react-redux'
-import App from './containers/App'
-import configureStore from './store/configureStore'
+import './styles/style.css';
+import 'babel-polyfill';
+import React from 'react';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import App from './containers/App';
+import configureStore from './store/configureStore';
 
 // it creates store with reducer from reducers\index.js, initial empty state and with thunk middleware and logger
 const store = configureStore()
