@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Redux async example",
   "scripts": {
-    "start": "nodemon server.js"
+    "start": "nodemon --ignore actions/ --ignore components/ --ignore containers/ --ignore lib/ --ignore reducers/ --ignore store/ --ignore index.js server.js"
   },
   "repository": {
     "type": "git",
