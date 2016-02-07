@@ -1,6 +1,6 @@
 # reduxTwitterTestApp
 
-this app is used for showing 50 latest tweets of a twitter user. It's implemented using [React framework](http://facebook.github.io/react/docs/getting-started.html) and [Redux container]. It uses Async test app from Redux as an infrastructure 
+this app is used for showing 50 latest tweets of a twitter user. It's implemented using [React framework](http://facebook.github.io/react/docs/getting-started.html) and [Redux container](https://github.com/rackt/redux). It uses Async test app from Redux as an infrastructure 
 
 ## Important used modules
 * [Redux Async example app](https://github.com/rackt/redux/tree/master/examples) - for app infrastructure
