@@ -6,6 +6,13 @@ export const RECEIVE_ERROR = 'RECEIVE_ERROR';
 export const CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO = 'CHANGE_FILTERING_OR_SORTING_OR_MODAL_INFO';
 
 
+function requestTweets() {
+  return {
+    type: REQUEST_TWEETS,
+    areTweetsLoading : true
+  }
+}
+
 function receiveTweets(response) {
   return {
     type: RECEIVE_TWEETS,

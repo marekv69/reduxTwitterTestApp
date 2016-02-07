@@ -2,6 +2,7 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import {Input, Button} from 'react-bootstrap';
+import { getTweets } from '../actions';
 
 /**
  * This component is used for searching tweets using Twitter API for a Twitter user
@@ -33,7 +34,9 @@ export default class SearchBar extends Component {
   _onButtonClick()
   {
     const currentInputValue = this.state.currentInputValue;
-    this.props.onSearchBarButtonClick(currentInputValue);
+    this.props.dispatch(getTweets(currentInputValue));
+    //this.props.onSearchBarButtonClick(currentInputValue);
+
   }
 
   render() {

@@ -3,9 +3,9 @@ import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 /*import TweetListButtonGroup from './TweetListButtonGroup.react';
 import TweetListFilterBar from './TweetListFilterBar.react';
-import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';
+import TweetListFilteringAndSortingInfo from './TweetListFilteringAndSortingInfo.react';*/
 import TweetListTweetsOutput from './TweetListTweetsOutput.react';
-import TweetListModalInfo from './TweetListModalInfo.react.js';*/
+//import TweetListModalInfo from './TweetListModalInfo.react.js';*/
 
 /**
  * This component is used for showing 50 latest tweets of a user if gathering the tweets using Twitter API
@@ -19,16 +19,8 @@ import TweetListModalInfo from './TweetListModalInfo.react.js';*/
  */
 export default class TweetList extends Component {
 
-
-
   constructor(props) {
     super(props);
-    this.state = {
-      currentSortingProperty : "date",
-      currentSortingType : "descending",
-      filterString : "",
-      showModalInfo : false
-    };
 
     this.changeSorting = this.changeSorting.bind(this);
     this.changeFilteringString = this.changeFilteringString.bind(this);
@@ -62,21 +54,31 @@ export default class TweetList extends Component {
   }
 
   render() {
+    /*<TweetListButtonGroup onChangeSorting={this.changeSorting} showModalInfo={this.showModalInfo}/>
+     <TweetListFilterBar onChangeFilteringString={this.changeFilteringString} filterString={this.state.filterString}/>
+     <TweetListFilteringAndSortingInfo filterString={this.state.filterString} currentSortingProperty=
+     {this.state.currentSortingProperty} currentSortingType={this.state.currentSortingType}/>*/
+
+    /* <TweetListModalInfo tweets={this.props.tweets} showModalInfo={this.state.showModalInfo}
+     closeModalInfoHandler={this._hideModalInfo}/>*/
+
     return (
       <div className="tweet-list">
-        <TweetListButtonGroup onChangeSorting={this.changeSorting} showModalInfo={this.showModalInfo}/>
-        <TweetListFilterBar onChangeFilteringString={this.changeFilteringString} filterString={this.state.filterString}/>
-        <TweetListFilteringAndSortingInfo filterString={this.state.filterString} currentSortingProperty=
-          {this.state.currentSortingProperty} currentSortingType={this.state.currentSortingType}/>
-        <TweetListTweetsOutput currentSortingProperty={this.state.currentSortingProperty} currentSortingType=
-          {this.state.currentSortingType} filterString={this.state.filterString} tweets={this.props.tweets}/>
-        <TweetListModalInfo tweets={this.props.tweets} showModalInfo={this.state.showModalInfo}
-                   closeModalInfoHandler={this._hideModalInfo}/>
+
+        <TweetListTweetsOutput currentSortingProperty={this.props.currentSortingProperty} currentSortingType=
+          {this.props.currentSortingType} filterString={this.props.filterString} tweets={this.props.tweets}/>
+
       </div>
     );
   }
 }
 
 TweetList.propTypes = {
-  tweets: PropTypes.array
+  tweets: PropTypes.array.isRequired,
+  areTweetsLoading: PropTypes.bool.isRequired,
+  currentSortingProperty: PropTypes.string.isRequired,
+  currentSortingType: PropTypes.string.isRequired,
+  filterString: PropTypes.string.isRequired,
+  showModalInfo: PropTypes.bool.isRequired,
+  dispatch: PropTypes.func.isRequired
 };
