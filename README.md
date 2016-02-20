@@ -27,5 +27,5 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
  https://marekvreduxtwittertestapp.herokuapp.com/
 
 ## TODO
-* Try using Immutablejs libraries to implement data layer
 * Divide application into more Redux containers
+* better solve sorting of tweets in tweetshelper.js
