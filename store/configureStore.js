@@ -3,6 +3,7 @@ import thunkMiddleware from 'redux-thunk'
 import createLogger from 'redux-logger'
 import tweetsReducer from '../reducers'
 
+
 export default function configureStore(initialState) {
   const store = createStore(
     tweetsReducer,

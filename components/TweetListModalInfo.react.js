@@ -25,7 +25,9 @@ export default class TweetListModalInfo extends Component {
     //This line is here because of bug https://phabricator.babeljs.io/T6662
     const {Header: ModalHeader, Body: ModalBody, Footer: ModalFooter, Title : ModalTitle} = Modal;
 
-    const {numberOfLikes, likesPerTweet, userNamesInTweetsMap} =  getTweetsInfo(this.props.tweets);
+    const tweetsJSON = this.props.tweets.toJSON();
+
+    const {numberOfLikes, likesPerTweet, userNamesInTweetsMap} =  getTweetsInfo(tweetsJSON);
 
     let userNames = null;
 
@@ -56,7 +58,7 @@ export default class TweetListModalInfo extends Component {
 }
 
 TweetListModalInfo.propTypes = {
-  tweets : PropTypes.array.isRequired,
+  tweets : PropTypes.object.isRequired,
   showModalInfo: PropTypes.bool.isRequired,
   dispatch: PropTypes.func.isRequired
 };

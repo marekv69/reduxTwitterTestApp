@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
-import { selectReddit, fetchPostsIfNeeded, invalidateReddit } from '../actions';
+import {Iterable} from 'immutable';
 import TweetList from '../components/TweetList.react';
 import SearchBar from '../components/SearchBar.react';
 import Message from '../components/Message.react';
@@ -42,7 +42,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  tweets: PropTypes.array,
+  tweets: PropTypes.object,
   errorMessage : PropTypes.string,
   standardMessage : PropTypes.string,
   areTweetsLoading: PropTypes.bool.isRequired,
@@ -55,7 +55,10 @@ App.propTypes = {
 
 function mapStateToProps(state) {
   const {areTweetsLoading, currentSortingProperty, currentSortingType, filterString, showModalInfo} = state;
-  const {tweets, errorMessage, standardMessage} = state.tweetsResponse || {};
+  const tweets = state.tweetsResponse ? state.tweetsResponse.get("tweets") : null;
+  const errorMessage =  state.tweetsResponse ? state.tweetsResponse.get("errorMessage") : null;
+  const standardMessage =  state.tweetsResponse ? state.tweetsResponse.get("standardMessage") : null;
+
   return {
     areTweetsLoading,
     currentSortingProperty,

@@ -2,7 +2,7 @@ import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import Tweet from 'react-tweet';
 import {Label} from 'react-bootstrap';
-import {createSortedTweets} from '../lib/tweetsHelper';
+import {sortTweets} from '../lib/tweetsHelper';
 
 
 /**
@@ -18,18 +18,20 @@ export default class TweetListTweetsOutput extends Component {
 
   render() {
     const filterRegex = this.props.filterString !== "" ? new RegExp(this.props.filterString, "i") : null;
-    const sortedTweets = createSortedTweets(this.props.tweets, this.props.currentSortingProperty, this.props.currentSortingType);
+    const tweetsJSON = this.props.tweets.toJSON();
 
-    const filteredTweets = sortedTweets
-      .reduce((arrayWithTweets, currentTweet) => {
-        if (filterRegex === null || filterRegex.test(currentTweet.text)) {
-          arrayWithTweets.push(<Tweet data={currentTweet} key={currentTweet.id}/>);
-        }
-        return arrayWithTweets;
-      }, []);
+
+    const sortedAndFilteredTweets = sortTweets(tweetsJSON, this.props.currentSortingProperty,
+        this.props.currentSortingType).reduce((arrayWithTweets, currentTweet) => {
+
+          if (filterRegex === null || filterRegex.test(currentTweet.text)) {
+            arrayWithTweets.push(<Tweet data={currentTweet} key={currentTweet.id}/>);
+          }
+          return arrayWithTweets;
+        }, []);
 
     const tweetsOutput =
-      filteredTweets.length > 0 ? filteredTweets :
+      sortedAndFilteredTweets.length > 0 ? sortedAndFilteredTweets :
         <span className="noTweetsMessage">There are no tweets containing <Label bsStyle="warning">{this.props.filterString}</Label></span>;
 
     return (
@@ -41,9 +43,9 @@ export default class TweetListTweetsOutput extends Component {
 }
 
 TweetListTweetsOutput.propTypes = {
-  currentSortingProperty : PropTypes.string,
-  currentSortingType  : PropTypes.string,
-  filterString : PropTypes.string,
-  tweets: PropTypes.array
+  currentSortingProperty : PropTypes.string.isRequired,
+  currentSortingType  : PropTypes.string.isRequired,
+  filterString : PropTypes.string.isRequired,
+  tweets: PropTypes.object.isRequired
 };
 

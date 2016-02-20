@@ -39,7 +39,7 @@ export default class TweetList extends Component {
 }
 
 TweetList.propTypes = {
-  tweets: PropTypes.array.isRequired,
+  tweets: PropTypes.object.isRequired,
   areTweetsLoading: PropTypes.bool.isRequired,
   currentSortingProperty: PropTypes.string.isRequired,
   currentSortingType: PropTypes.string.isRequired,
