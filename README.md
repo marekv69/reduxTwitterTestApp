@@ -29,3 +29,4 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
 ## TODO
 * Divide application into more Redux containers
 * better solve sorting of tweets in tweetshelper.js
+* creat the whole app more dynamic (e. g. load tweets dynamically when user typing to input for inserting username)
