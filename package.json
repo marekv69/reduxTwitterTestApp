@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Redux twitter test app. It uses async example from redux project by Dan Abramov",
   "scripts": {
-    "start": "nodemon --ignore actions/ --ignore components/ --ignore containers/ --ignore lib/ --ignore reducers/ --ignore store/ --ignore index.js server.js"
+    "start": "nodemon --harmony --ignore actions/ --ignore components/ --ignore containers/ --ignore lib/ --ignore reducers/ --ignore store/ --ignore index.js server.js"
   },
   "repository": {
     "type": "git",
