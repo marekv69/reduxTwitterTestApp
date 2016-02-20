@@ -21,9 +21,12 @@ module.exports = {
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel'],
+        loader: 'babel',
         exclude: /node_modules/,
-        include: __dirname
+        include: __dirname,
+        query: {
+          presets: ['es2015', 'react', 'stage-1']
+        }
       },
       {
         test: /\.css$/,
