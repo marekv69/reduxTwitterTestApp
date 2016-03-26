@@ -29,5 +29,6 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
 ## TODO
 * Try using redux-devtools
 * Divide application into more Redux containers
+* replace https://github.com/gaearon/react-pure-render with a standard React features 
 * better solve sorting of tweets in tweetshelper.js
 * creat the whole app more dynamic (e. g. load tweets dynamically when user typing to input for inserting username)
