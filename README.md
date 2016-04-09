@@ -28,7 +28,8 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
 
 ## TODO
 * Try using redux-devtools
-* switch to React 15
+* upgrade to React 15
+* upgrade to redux-thunk 2.0
 * try to use react-router-redux
 * Divide application into more Redux containers
 * replace https://github.com/gaearon/react-pure-render with a standard React features
