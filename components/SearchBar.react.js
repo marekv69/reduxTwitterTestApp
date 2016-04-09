@@ -26,13 +26,14 @@ class SearchBar extends Component {
 
     const innerButton =
         <Button
-            disabled={ this.state.currentInputValue === "" || this.props.areTweetsLoading}
+            disabled={ this.state.currentInputValue === "" || this.props.isGUIBlocked}
             bsStyle="primary"
             onClick={ () => {
               this.props.onButtonClick(this.state.currentInputValue);
             }}
             standalone>
-          { this.props.areTweetsLoading ? "Loading..." : "Show tweets" }
+          { this.props.isGUIBlocked ? this.props.innerButtonLabelWhenGUIBlocked || "Disabled" :
+          this.props.innerButtonLabel || "Button" }
         </Button>;
 
     return (
@@ -41,7 +42,7 @@ class SearchBar extends Component {
             <Input
                 buttonAfter={innerButton}
                 className="searchInput"
-                disabled={this.props.areTweetsLoading}
+                disabled={this.props.isGUIBlocked}
                 onChange={this._handleInputValueChange.bind(this)}
                 onKeyPress={(event) =>{
                   if(event.charCode==13){
@@ -51,7 +52,7 @@ class SearchBar extends Component {
                     }
                   }
                 }}
-                placeholder="Type twitter username"
+                placeholder= {this.props.inputPlaceholder || "placeholder"}
                 standalone
                 type="text"
                 value = {this.state.currentInputValue}
@@ -65,8 +66,11 @@ class SearchBar extends Component {
 }
 
 SearchBar.propTypes = {
-  areTweetsLoading: PropTypes.bool.isRequired,
-  onButtonClick: PropTypes.func.isRequired
+  isGUIBlocked: PropTypes.bool.isRequired,
+  onButtonClick: PropTypes.func.isRequired,
+  inputPlaceholder : PropTypes.string,
+  innerButtonLabel : PropTypes.string,
+  innerButtonLabelWhenGUIBlocked : PropTypes.string
 };
 
 export default SearchBar;

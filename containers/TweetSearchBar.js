@@ -8,9 +8,10 @@ import { getTweets } from '../actions';
  * Action onButtonClick is used for gathering tweets
  */
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state, ownProps) => {
   return {
-    areTweetsLoading: state.areTweetsLoading
+    isGUIBlocked: state.areTweetsLoading,
+      ...ownProps
   };
 };
 

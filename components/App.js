@@ -10,7 +10,8 @@ class App extends Component {
     return (
         <div className="twitter-app-page">
           <h2>Show 50 latest tweets by user name</h2>
-          <TweetSearchBar />
+          <TweetSearchBar inputPlaceholder ="Type twitter username" innerButtonLabel = "Show tweets"
+                          innerButtonLabelWhenGUIBlocked = "Loading..."/>
           <TweetSearchMessage />
         </div>
     );
