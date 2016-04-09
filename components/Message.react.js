@@ -2,8 +2,7 @@ import Component from 'react-pure-render/component';
 import React, { PropTypes } from 'react'
 
 /**
- * This component is used for showing message if user has no tweets
- * or gathering tweets using Twitter API finished with an error
+ * This component is used for showing a message.
  */
 export default class Message extends Component {
 
@@ -12,17 +11,16 @@ export default class Message extends Component {
   }
 
   render() {
-    const {message, messageType} = this.props;
-    const className = messageType === "standardMessage" ? "message" : "message error";
+    const {messageText, isErrorMessage} = this.props;
 
     return (
-      <div className={className}>{message}</div>
+    messageText ? <div className={isErrorMessage ? "message error" : "message"}>{messageText}</div> : null
     );
   }
 }
 
 Message.propTypes = {
-  message: PropTypes.string,
-  messageType: PropTypes.string
+  messageText: PropTypes.string,
+  isErrorMessage: PropTypes.bool
 };
 
