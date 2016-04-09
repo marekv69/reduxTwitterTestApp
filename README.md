@@ -27,11 +27,13 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
  https://marekvreduxtwittertestapp.herokuapp.com/
 
 ## TODO
+* Divide application into more Redux containers
+* keep sortingAndFilteringOptions in state only if some tweets are shown in the GUI
+* divide app into more reducers
 * Try using redux-devtools
 * upgrade to React 15
 * upgrade to redux-thunk 2.0
 * try to use react-router-redux
-* Divide application into more Redux containers
 * replace https://github.com/gaearon/react-pure-render with a standard React features
 * use SASS, LESS for styling each react component
 * better solve sorting of tweets in tweetshelper.js
