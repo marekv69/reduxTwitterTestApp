@@ -28,6 +28,8 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
 
 ## TODO
 * Try using redux-devtools
+* switch to React 15
+* try to use react-router-redux
 * Divide application into more Redux containers
 * replace https://github.com/gaearon/react-pure-render with a standard React features 
 * better solve sorting of tweets in tweetshelper.js
