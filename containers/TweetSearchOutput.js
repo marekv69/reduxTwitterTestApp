@@ -1,7 +1,7 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
-import TweetListButtonGroup from '../components/TweetListButtonGroup.react';
+import TweetListButtonGroup from './TweetListButtonGroup.js';
 import TweetListFilterBar from '../components/TweetListFilterBar.react';
 import TweetListFilteringAndSortingInfo from '../components/TweetListFilteringAndSortingInfo.react';
 import TweetListTweetsOutput from '../components/TweetListTweetsOutput.react';
@@ -23,12 +23,11 @@ class TweetSearchOutput extends Component {
   }
 
   render() {
-    const { tweets, currentSortingProperty,
-        currentSortingType, filterString, showModalInfo, dispatch} = this.props;
+    const { tweets} = this.props;
 
     const tweetsSearchOutput =
         <div className="tweet-list">
-          <TweetListButtonGroup dispatch={this.props.dispatch}/>
+          <TweetListButtonGroup/>
           <TweetListFilterBar filterString={this.props.filterString} dispatch={this.props.dispatch}/>
           <TweetListFilteringAndSortingInfo filterString={this.props.filterString} currentSortingProperty=
           {this.props.currentSortingProperty} currentSortingType={this.props.currentSortingType}/>
