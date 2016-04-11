@@ -6,7 +6,7 @@ import {Label} from 'react-bootstrap';
  * This component shows current filtering and sorting info. It shows current filter string if filtering is applied and
  * also current sorting (through date or likes and descending or ascending)
  */
-export default class TweetListFilteringInfo extends Component {
+export default class TweetListFilteringAndSortingInfo extends Component {
   
   constructor(props) {
     super(props);
@@ -32,7 +32,7 @@ export default class TweetListFilteringInfo extends Component {
   }
 }
 
-TweetListFilteringInfo.propTypes = {
+TweetListFilteringAndSortingInfo.propTypes = {
   filterString: PropTypes.string.isRequired,
   currentSortingProperty : PropTypes.string.isRequired,
   currentSortingType : PropTypes.string.isRequired

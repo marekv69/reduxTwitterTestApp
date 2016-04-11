@@ -1,7 +1,6 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import {Input, Button} from 'react-bootstrap';
-import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**
  * This component is used for filtering showed tweets through a filter string in their bodies.
@@ -21,9 +20,7 @@ export default class TweetListFilterBar extends Component {
   }
 
   _onButtonClick() {
-    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
-      filterString : this.state.inputValue
-    }));
+    this.props.changeFiltering(this.state.inputValue);
     this.setState({
       inputValue : ""
     });
@@ -65,5 +62,5 @@ export default class TweetListFilterBar extends Component {
 
 PropTypes.propTypes = {
   filterString: PropTypes.string.isRequired,
-  dispatch: PropTypes.func.isRequired
+  changeFiltering : PropTypes.func.isRequired
 };

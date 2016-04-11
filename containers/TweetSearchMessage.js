@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Message from '../components/Message.react';
+import Message from '../components/Message';
 
 
 /**

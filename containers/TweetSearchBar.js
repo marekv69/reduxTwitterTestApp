@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import SearchBar from '../components/SearchBar.react';
+import SearchBar from '../components/SearchBar';
 import { getTweets } from '../actions';
 
 /**

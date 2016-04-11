@@ -10,46 +10,26 @@ import { changeFilteringOrSortingOrModalInfo } from '../actions';
  * Two <DropdownButton> components are used for sorting.
  * Showing modal info window can be triggered by <Button> component.
  */
-class TweetListButtonGroup extends Component {
+export default class TweetListButtonGroup extends Component {
 
   constructor(props) {
     super(props);
   }
-
-  _sortByDateSelected(e, sortingType) {
-    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
-      currentSortingProperty : "date",
-      currentSortingType : sortingType
-    }));
-  }
-
-  _sortByLikesSelected(e, sortingType) {
-    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
-      currentSortingProperty : "likes",
-      currentSortingType : sortingType
-    }));
-  }
-
-  _showModalInfo() {
-    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
-      showModalInfo : true
-    }))
-  }
-
+  
   render() {
     return (
         <ButtonGroup>
           <DropdownButton title="Sort by date" bsStyle="info" bsSize="xsmall" id="dropdown1"
-                          onSelect={this._sortByDateSelected.bind(this)}>
+                          onSelect={this.props.sortByDate}>
             <MenuItem eventKey="ascending">Ascending</MenuItem>
             <MenuItem eventKey="descending">Descending</MenuItem>
           </DropdownButton>
           <DropdownButton title="Sort by likes" bsStyle="info" bsSize="xsmall" id="dropdown2"
-                          onSelect={this._sortByLikesSelected.bind(this)}>
+                          onSelect={this.props.sortByLikes}>
             <MenuItem eventKey="ascending">Ascending</MenuItem>
             <MenuItem eventKey="descending">Descending</MenuItem>
           </DropdownButton>
-          <Button bsStyle="success" bsSize="xsmall" onClick={this._showModalInfo.bind(this)}>
+          <Button bsStyle="success" bsSize="xsmall" onClick={this.props.showModalInfo}>
             Show modal info
           </Button>
         </ButtonGroup>
@@ -58,7 +38,8 @@ class TweetListButtonGroup extends Component {
 }
 
 TweetListButtonGroup.propTypes = {
-  dispatch: PropTypes.func.isRequired
+  sortByDate: PropTypes.func.isRequired,
+  sortByLikes: PropTypes.func.isRequired,
+  showModalInfo: PropTypes.func.isRequired
 };
 
-export default connect()(TweetListButtonGroup);

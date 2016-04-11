@@ -1,11 +1,9 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
-import TweetListButtonGroup from './TweetListButtonGroup.js';
-import TweetListFilterBar from '../components/TweetListFilterBar.react';
-import TweetListFilteringAndSortingInfo from '../components/TweetListFilteringAndSortingInfo.react';
-import TweetListTweetsOutput from '../components/TweetListTweetsOutput.react';
-import TweetListModalInfo from '../components/TweetListModalInfo.react.js';
+import TweetListFilteringAndSortingContainer from './TweetFilteringAndSortingContainer';
+import TweetListTweetsOutput from '../components/TweetListTweetsOutput';
+import TweetListModalInfo from '../components/TweetListModalInfo';
 
 /**
  * This container is used for showing 50 latest tweets of a user if gathering the tweets using Twitter API
@@ -27,10 +25,7 @@ class TweetSearchOutput extends Component {
 
     const tweetsSearchOutput =
         <div className="tweet-list">
-          <TweetListButtonGroup/>
-          <TweetListFilterBar filterString={this.props.filterString} dispatch={this.props.dispatch}/>
-          <TweetListFilteringAndSortingInfo filterString={this.props.filterString} currentSortingProperty=
-          {this.props.currentSortingProperty} currentSortingType={this.props.currentSortingType}/>
+          <TweetListFilteringAndSortingContainer />
           <TweetListTweetsOutput currentSortingProperty={this.props.currentSortingProperty} currentSortingType=
           {this.props.currentSortingType} filterString={this.props.filterString} tweets={this.props.tweets}/>
           <TweetListModalInfo tweets={this.props.tweets} dispatch={this.props.dispatch}
