@@ -36,5 +36,5 @@ this app is used for showing 50 latest tweets of a twitter user. It's implemente
 * try to use react-router-redux
 * replace https://github.com/gaearon/react-pure-render with a standard React features
 * use SASS, LESS for styling each react component
-* better solve sorting of tweets in tweetshelper.js
+* better solve sorting of tweets in tweetshelper.js - move it to server
 * creat the whole app more dynamic (e. g. load tweets dynamically when user typing to input for inserting username)
