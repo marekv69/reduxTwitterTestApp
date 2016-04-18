@@ -1,8 +1,8 @@
 import Component from 'react-pure-render/component';
 import React from 'react';
-import TweetSearchBar from '../containers/TweetSearchBar';
-import TweetSearchMessage from '../containers/TweetSearchMessage';
-import TweetSearchOutput from '../containers/TweetSearchOutput';
+import TweetSearchBar from '../containers/TweetSearchBarContainer';
+import TweetSearchMessage from '../containers/TweetSearchMessageContainer';
+import TweetSearchOutput from '../containers/TweetSearchOutputContainer';
 
 class App extends Component {
 

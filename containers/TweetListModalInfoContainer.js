@@ -1,25 +1,20 @@
-import Component from 'react-pure-render/component';
+import Component from '../node_modules/react-pure-render/component';
 import React, {PropTypes} from 'react';
+import { connect } from 'react-redux';
 import {Modal,  Button} from 'react-bootstrap';
 import {getTweetsInfo} from '../lib/tweetsHelper'
 import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**
- * This component defines ModalInfo dialog contains basic statistics information about the tweets. It contains number
+ * This container defines ModalInfo dialog contains basic statistics information about the tweets. It contains number
  * of likes, likes per tweet and list of all Twitter users mentioned in the tweets.
  */
-export default class TweetListModalInfo extends Component {
+export default class TweetListModalInfoContainer extends Component {
 
   constructor(props) {
     super(props);
-    this._closeModalInfo = this._closeModalInfo.bind(this);
   }
 
-  _closeModalInfo() {
-    this.props.dispatch(changeFilteringOrSortingOrModalInfo({
-      showModalInfo : false
-    }))
-  }
 
   render() {
     //This line is here because of bug https://phabricator.babeljs.io/T6662
@@ -40,7 +35,7 @@ export default class TweetListModalInfo extends Component {
     }
 
     return (
-      <Modal backdrop='static' show={this.props.showModalInfo} onHide={this._closeModalInfo}>
+      <Modal backdrop='static' show={this.props.showModalInfo} onHide={this.props.closeModalInfo}>
         <ModalHeader closeButton>
           <ModalTitle>Statistics for shown tweets</ModalTitle>
         </ModalHeader>
@@ -50,15 +45,39 @@ export default class TweetListModalInfo extends Component {
           {userNames !==null ? <div>User names: {userNames}</div> : null}
         </ModalBody>
         <ModalFooter>
-          <Button onClick={this._closeModalInfo}>Close</Button>
+          <Button onClick={this.props.closeModalInfo}>Close</Button>
         </ModalFooter>
       </Modal>
     );
   }
 }
 
-TweetListModalInfo.propTypes = {
+TweetListModalInfoContainer.propTypes = {
   tweets : PropTypes.object.isRequired,
   showModalInfo: PropTypes.bool.isRequired,
-  dispatch: PropTypes.func.isRequired
+  closeModalInfo : PropTypes.func.isRequired
 };
+
+function mapStateToProps(state) {
+  const {showModalInfo} = state;
+  const tweets = state.tweetsResponse ? state.tweetsResponse.get("tweets") : null;
+
+
+  return {
+    showModalInfo,
+    tweets
+  };
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    closeModalInfo : () => {
+      dispatch(changeFilteringOrSortingOrModalInfo({
+        showModalInfo: false
+      }))
+    }
+  };
+};
+
+//Connects this react component to react store
+export default connect(mapStateToProps, mapDispatchToProps)(TweetListModalInfoContainer)
