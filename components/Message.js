@@ -5,11 +5,7 @@ import React, { PropTypes } from 'react'
  * This component is used for showing a message.
  */
 export default class Message extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
+  
   render() {
     const {messageText, isErrorMessage} = this.props;
 

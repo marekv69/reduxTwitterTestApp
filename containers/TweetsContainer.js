@@ -10,12 +10,7 @@ import {sortTweets} from '../lib/tweetsHelper';
  * TODO: write comment
  */
 class TweetsContainer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
+  
   render() {
     const filterRegex = this.props.filterString !== "" ? new RegExp(this.props.filterString, "i") : null;
     const tweetsJSON = this.props.tweets.toJSON();

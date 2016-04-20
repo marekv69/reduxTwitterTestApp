@@ -7,11 +7,6 @@ import {Label} from 'react-bootstrap';
  * also current sorting (through date or likes and descending or ascending)
  */
 export default class TweetListFilteringAndSortingInfo extends Component {
-  
-  constructor(props) {
-    super(props);
-
-  }
 
   render() {
     const filteringInfoOutput =

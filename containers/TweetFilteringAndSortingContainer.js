@@ -13,12 +13,7 @@ import { changeFilteringOrSortingOrModalInfo } from '../actions';
  * Showing modal info window can be triggered by <Button> component.
  */
 class TweetListFilteringAndSortingContainer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
+  
   render() {
     return (
         <div>

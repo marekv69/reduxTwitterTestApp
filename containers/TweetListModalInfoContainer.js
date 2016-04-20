@@ -10,12 +10,7 @@ import { changeFilteringOrSortingOrModalInfo } from '../actions';
  * of likes, likes per tweet and list of all Twitter users mentioned in the tweets.
  */
 export default class TweetListModalInfoContainer extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
+  
   render() {
     //This line is here because of bug https://phabricator.babeljs.io/T6662
     const {Header: ModalHeader, Body: ModalBody, Footer: ModalFooter, Title : ModalTitle} = Modal;

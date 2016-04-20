@@ -6,10 +6,6 @@ import {ButtonGroup, DropdownButton, Button, MenuItem} from 'react-bootstrap';
  * TODO: comment
  */
 export default class TweetListButtonGroup extends Component {
-
-  constructor(props) {
-    super(props);
-  }
   
   render() {
     return (

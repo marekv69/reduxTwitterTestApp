@@ -7,12 +7,7 @@ import Tweet from 'react-tweet';
  * This component shows list of Tweets using react-tweet component
  */
 export default class Tweets extends Component {
-
-  constructor(props) {
-    super(props);
-  }
-
-
+  
   render() {
     const tweetsList = this.props.tweets.map(function(currentTweet){
       return <Tweet data={currentTweet} key={currentTweet.id}/>;
