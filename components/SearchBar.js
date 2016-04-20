@@ -1,7 +1,6 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import {Input, Button} from 'react-bootstrap';
-import { getTweets } from '../actions';
 
 /**
  * TODO: add comment
