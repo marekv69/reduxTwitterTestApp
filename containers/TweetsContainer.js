@@ -1,8 +1,9 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
-import Tweets from '../components/Tweets';
 import {Label} from 'react-bootstrap';
+import Tweets from '../components/Tweets';
+import TweetListFilteringAndSortingInfo from '../components/TweetListFilteringAndSortingInfo';
 import {sortTweets} from '../lib/tweetsHelper';
 
 
@@ -31,6 +32,8 @@ class TweetsContainer extends Component {
 
     return (
         <div className="tweets-output">
+          <TweetListFilteringAndSortingInfo filterString={this.props.filterString} currentSortingProperty=
+              {this.props.currentSortingProperty} currentSortingType={this.props.currentSortingType}/>
           {tweetsOutput}
         </div>
     );

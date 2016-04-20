@@ -3,7 +3,6 @@ import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import TweetListButtonGroup from '../components/TweetListButtonGroup';
 import TweetListFilterBar from '../components/TweetListFilterBar';
-import TweetListFilteringAndSortingInfo from '../components/TweetListFilteringAndSortingInfo';
 import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**
@@ -22,16 +21,13 @@ class TweetListFilteringAndSortingContainer extends Component {
                               showModalInfo = {this.props.showModalInfo} />
           <TweetListFilterBar filterString = {this.props.filterString}
                               changeFiltering = {this.props.changeFiltering}/>
-          <TweetListFilteringAndSortingInfo filterString={this.props.filterString} currentSortingProperty=
-              {this.props.currentSortingProperty} currentSortingType={this.props.currentSortingType}/>
+
         </div>
     );
   }
 }
 
 TweetListFilteringAndSortingContainer.propTypes = {
-  currentSortingProperty: PropTypes.string.isRequired,
-  currentSortingType: PropTypes.string.isRequired,
   filterString: PropTypes.string.isRequired,
   sortByDate : PropTypes.func.isRequired,
   sortByLikes : PropTypes.func.isRequired,
@@ -40,11 +36,9 @@ TweetListFilteringAndSortingContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const {currentSortingProperty, currentSortingType, filterString, showModalInfo} = state;
+  const {filterString, showModalInfo} = state;
 
   return {
-    currentSortingProperty,
-    currentSortingType,
     filterString,
     showModalInfo
   };
