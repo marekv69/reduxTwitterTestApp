@@ -14,12 +14,7 @@ class SearchBar extends Component {
       currentInputValue: ""
     };
   }
-
-  _handleInputValueChange(event) {
-    this.setState({currentInputValue : event.target.value})
-  }
-
-
+  
   render() {
     let input;
 
@@ -42,7 +37,9 @@ class SearchBar extends Component {
                 buttonAfter={innerButton}
                 className="searchInput"
                 disabled={this.props.isGUIBlocked}
-                onChange={this._handleInputValueChange.bind(this)}
+                onChange={(event) => {
+                  this.setState({currentInputValue : event.target.value})
+                }}
                 onKeyPress={(event) =>{
                   if(event.charCode==13){
                     event.preventDefault();
