@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import TweetListButtonGroup from '../components/TweetListButtonGroup';
 import TweetListFilterBar from '../components/TweetListFilterBar';
 import TweetListFilteringAndSortingInfo from '../components/TweetListFilteringAndSortingInfo';
-import {ButtonGroup, DropdownButton, Button, MenuItem} from 'react-bootstrap';
 import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**

@@ -23,12 +23,12 @@ const mapDispatchToProps = (dispatch) => {
   };
 };
 
-const TweetSearchBar = connect(
+const TweetSearchBarContainer = connect(
     mapStateToProps,
     mapDispatchToProps
 )(SearchBar);
 
-export default TweetSearchBar;
+export default TweetSearchBarContainer;
 
 
 

@@ -1,14 +1,9 @@
 import Component from '../node_modules/react-pure-render/component';
 import React, {PropTypes} from 'react';
-import { connect } from 'react-redux';
 import {ButtonGroup, DropdownButton, Button, MenuItem} from 'react-bootstrap';
-import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**
- * This container contains GUI elements for sorting and showing modal info window.
- * It allows sorting tweets through date when a tweet was added and likes of each tweets. Both ascending and descending.
- * Two <DropdownButton> components are used for sorting.
- * Showing modal info window can be triggered by <Button> component.
+ * TODO: comment
  */
 export default class TweetListButtonGroup extends Component {
 

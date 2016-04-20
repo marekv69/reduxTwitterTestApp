@@ -3,12 +3,12 @@ import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import TweetListFilteringAndSortingContainer from './TweetFilteringAndSortingContainer';
 import TweetsContainer from './TweetsContainer';
-import TweetListModalInfo from './TweetListModalInfoContainer';
+import TweetListModalInfoContainer from './TweetListModalInfoContainer';
 
 /**
  * TODO: add comment
  */
-class TweetSearchOutput extends Component {
+class TweetSearchOutputContainer extends Component {
 
   render() {
     const { tweets} = this.props;
@@ -17,7 +17,7 @@ class TweetSearchOutput extends Component {
         <div className="tweet-list">
           <TweetListFilteringAndSortingContainer />
           <TweetsContainer />
-          <TweetListModalInfo />
+          <TweetListModalInfoContainer />
         </div>
 
     return (
@@ -26,7 +26,7 @@ class TweetSearchOutput extends Component {
   }
 }
 
-TweetSearchOutput.propTypes = {
+TweetSearchOutputContainer.propTypes = {
   tweets: PropTypes.object
 };
 
@@ -38,4 +38,4 @@ function mapStateToProps(state) {
 }
 
 //Connects this react component to react store
-export default connect(mapStateToProps)(TweetSearchOutput)
+export default connect(mapStateToProps)(TweetSearchOutputContainer)

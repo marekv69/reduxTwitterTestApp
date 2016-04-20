@@ -28,8 +28,8 @@ const mapStateToProps = (state) => {
   return {};
 };
 
-const TweetSearchMessage = connect(
+const TweetSearchMessageContainer = connect(
     mapStateToProps,
 )(Message);
 
-export default TweetSearchMessage;
+export default TweetSearchMessageContainer;

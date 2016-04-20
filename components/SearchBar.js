@@ -4,7 +4,7 @@ import {Input, Button} from 'react-bootstrap';
 import { getTweets } from '../actions';
 
 /**
- * TODO: add comment, rename component because the current name is obsolete
+ * TODO: add comment
  */
 
 class SearchBar extends Component {
