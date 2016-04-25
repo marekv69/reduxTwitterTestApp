@@ -19,8 +19,7 @@ class TweetListFilteringAndSortingContainer extends Component {
           <TweetListButtonGroup sortByDate = {this.props.sortByDate} 
                               sortByLikes = {this.props.sortByLikes}
                               showModalInfo = {this.props.showModalInfo} />
-          <TweetListFilterBar filterString = {this.props.filterString}
-                              changeFiltering = {this.props.changeFiltering}/>
+          <TweetListFilterBar changeFiltering = {this.props.changeFiltering}/>
 
         </div>
     );
@@ -28,7 +27,6 @@ class TweetListFilteringAndSortingContainer extends Component {
 }
 
 TweetListFilteringAndSortingContainer.propTypes = {
-  filterString: PropTypes.string.isRequired,
   sortByDate : PropTypes.func.isRequired,
   sortByLikes : PropTypes.func.isRequired,
   showModalInfo : PropTypes.func.isRequired,
@@ -36,10 +34,9 @@ TweetListFilteringAndSortingContainer.propTypes = {
 };
 
 const mapStateToProps = (state) => {
-  const {filterString, showModalInfo} = state;
+  const {showModalInfo} = state;
 
   return {
-    filterString,
     showModalInfo
   };
 

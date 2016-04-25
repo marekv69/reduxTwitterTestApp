@@ -7,53 +7,16 @@ import {Input, Button} from 'react-bootstrap';
  * It contains <Input> for entering the filter string and <Button> for confirmation of the filter
  */
 export default class TweetListFilterBar extends Component {
-
-  constructor(props) {
-    super(props);
-    this._onButtonClick = this._onButtonClick.bind(this);
-    this._handleKeyPress = this._handleKeyPress.bind(this);
-    this._onInputValueChange = this._onInputValueChange.bind(this);
-
-    this.state = {
-      inputValue : ""
-    };
-  }
-
-  _onButtonClick() {
-    this.props.changeFiltering(this.state.inputValue);
-    this.setState({
-      inputValue : ""
-    });
-  }
-
-  _handleKeyPress(event) {
-    if(event.charCode==13 && this.state.inputValue !== ""){
-      this._onButtonClick();
-    }
-  }
-
-  _onInputValueChange(event){
-    this.setState({
-      inputValue : event.target.value
-    });
-  }
-
+  
   render() {
-    const innerButton =
-      <Button title="Filter" bsSize="small" bsStyle="info" onClick={this._onButtonClick}>
-        {this.props.filterString === "" ? "Use Filter" : "Clear Filter"}
-      </Button>;
 
     return (
       <div className="filter-bar">
-        <Input bsSize="small" placeholder={this.props.filterString === "" ? "Write some text and press Enter or use " +
-         "Filter button to filter tweets" : "Filter is on. Click Clear Filter button to clear filter"}
+        <Input bsSize="small" placeholder={"Write some text to filter tweets"}
           type="text"
-          buttonAfter={innerButton}
-          disabled = {this.props.filterString !== ""}
-          onKeyPress={this._handleKeyPress}
-          onChange={this._onInputValueChange}
-          value={this.state.inputValue}
+          onChange={(e) => {
+              this.props.changeFiltering(e.target.value);
+          }}
         />
       </div>
     );
@@ -61,6 +24,5 @@ export default class TweetListFilterBar extends Component {
 }
 
 PropTypes.propTypes = {
-  filterString: PropTypes.string.isRequired,
   changeFiltering : PropTypes.func.isRequired
 };
