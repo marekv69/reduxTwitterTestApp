@@ -2,7 +2,6 @@ import Component from '../node_modules/react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
 import TweetListButtonGroup from '../components/TweetListButtonGroup';
-import TweetListFilterBar from '../components/TweetListFilterBar';
 import { changeFilteringOrSortingOrModalInfo } from '../actions';
 
 /**
@@ -11,7 +10,7 @@ import { changeFilteringOrSortingOrModalInfo } from '../actions';
  * Two <DropdownButton> components are used for sorting.
  * Showing modal info window can be triggered by <Button> component.
  */
-class TweetListFilteringAndSortingContainer extends Component {
+class TweetListSortingContainer extends Component {
   
   render() {
     return (
@@ -19,18 +18,15 @@ class TweetListFilteringAndSortingContainer extends Component {
           <TweetListButtonGroup sortByDate = {this.props.sortByDate} 
                               sortByLikes = {this.props.sortByLikes}
                               showModalInfo = {this.props.showModalInfo} />
-          <TweetListFilterBar changeFiltering = {this.props.changeFiltering}/>
-
         </div>
     );
   }
 }
 
-TweetListFilteringAndSortingContainer.propTypes = {
+TweetListSortingContainer.propTypes = {
   sortByDate : PropTypes.func.isRequired,
   sortByLikes : PropTypes.func.isRequired,
-  showModalInfo : PropTypes.func.isRequired,
-  changeFiltering : PropTypes.func.isRequired
+  showModalInfo : PropTypes.func.isRequired
 };
 
 const mapStateToProps = (state) => {
@@ -63,16 +59,10 @@ const mapDispatchToProps = (dispatch) => {
       dispatch(changeFilteringOrSortingOrModalInfo({
         showModalInfo : true
       }));
-    },
-    
-    changeFiltering : (newFilterString) => {
-      dispatch(changeFilteringOrSortingOrModalInfo({
-        filterString : newFilterString
-      }));
     }
 
   };
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(TweetListFilteringAndSortingContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(TweetListSortingContainer);

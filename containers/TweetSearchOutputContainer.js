@@ -1,7 +1,8 @@
 import Component from 'react-pure-render/component';
 import React, {PropTypes} from 'react';
 import { connect } from 'react-redux';
-import TweetListFilteringAndSortingContainer from './TweetFilteringAndSortingContainer';
+import TweetSortingContainer from './TweetSortingContainer';
+import TweetListFilterBarContainer from './TweetListFilterBarContainer';
 import TweetsContainer from './TweetsContainer';
 import TweetListModalInfoContainer from './TweetListModalInfoContainer';
 
@@ -15,7 +16,8 @@ class TweetSearchOutputContainer extends Component {
 
     const tweetsSearchOutput =
         <div className="tweet-list">
-          <TweetListFilteringAndSortingContainer />
+          <TweetSortingContainer />
+          <TweetListFilterBarContainer />
           <TweetsContainer />
           <TweetListModalInfoContainer />
         </div>
