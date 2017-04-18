@@ -9,7 +9,7 @@ import { changeFilteringOrSortingOrModalInfo } from '../actions';
  * This container defines ModalInfo dialog contains basic statistics information about the tweets. It contains number
  * of likes, likes per tweet and list of all Twitter users mentioned in the tweets.
  */
-export default class TweetListModalInfoContainer extends Component {
+class TweetListModalInfoContainer extends Component {
   
   render() {
     //This line is here because of bug https://phabricator.babeljs.io/T6662
